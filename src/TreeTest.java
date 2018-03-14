@@ -1,10 +1,17 @@
+// TreeTest.java
+//
+// the main part of testing
+// it performs each algorithm to evaluate it in terms of speed.
+
+
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
-
+// class Result
+// a container to hold all settings required for an algorithm
 class Result{
 	double P; // probability to extend nodes (just for record)
 	double ave_n1; // average number of nodes of tree1
@@ -15,8 +22,19 @@ class Result{
 	double ave_time_acc; // average time to get a value of a leaf
 }
 
+// class TreeTest
+//
+// the main class
+// it has methods to perform testing
 public class TreeTest {
 
+	// main
+	// It first creates lists to hold results
+	// Then, at each iteration of the for loop,
+	// it performs testing with a different probability to extend a node.
+	// (see the method "test" for details)
+	// Finally, it displays the results.
+	// (see the method "display" for details)
 	public static void main(String[] args) {
 		ArrayList<Result> alg1 = new ArrayList<Result>();
 		ArrayList<Result> alg2 = new ArrayList<Result>();
@@ -38,6 +56,9 @@ public class TreeTest {
 		display(alg3,"Algo3.csv");
 		
 	}
+	
+	// display
+	// It displays the results of the testing and writes them into a specified file
 	public static void display(ArrayList<Result> alg, String filename) {
 		try{
 			FileWriter fw = new FileWriter(new File(filename));
@@ -60,6 +81,10 @@ public class TreeTest {
 			System.exit(-1);
 		}
 	}
+	
+	// test
+	// the core of testing.
+	// 
 	public static void test(ArrayList<Result> alg1, ArrayList<Result> alg2, ArrayList<Result> alg3){
 		int ntrials = 100000;
 		int ntrials_acc = 0;
